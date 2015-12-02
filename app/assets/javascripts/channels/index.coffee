@@ -1,7 +1,8 @@
 #= require cable
 
 @App = {}
-App.cable = Cable.createConsumer 'ws://127.0.0.1:28080'
+# App.cable = Cable.createConsumer 'ws://127.0.0.1/websocket'
+App.cable = Cable.createConsumer 'ws://' + window.location.host + '/websocket'
 
 $.each [0, 1, 2], (index, id) ->
   App.messages = App.cable.subscriptions.create 'MessagesChannel',
