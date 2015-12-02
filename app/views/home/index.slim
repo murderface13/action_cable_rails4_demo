@@ -1,0 +1,6 @@
+- 3.times do |user_id|
+  ul class= "user_#{user_id}"
+    = form_for :message, url: messages_path, remote: true, id: "user_#{user_id}_form" do |f|
+      = f.hidden_field :user_id, value: user_id
+      = f.text_field :message
+      = f.submit

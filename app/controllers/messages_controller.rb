@@ -1,9 +1,9 @@
 class MessagesController < ApplicationController
   def create
     ActionCable.server.broadcast 'messages',
-      message: params[:message][:body],
-      username: cookies.signed[:username]
+      message: params[:message][:message],
+      user_id: params[:message][:user_id]
 
-    head :ok
+    render nothing: true, status: 204
   end
 end
